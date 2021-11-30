@@ -12,7 +12,8 @@
     "express": "4.17.1",
     "mongodb": "^4.2.0",
     "randomstring": "^1.2.1",
-    "tslib": "^2.0.0"
+    "tslib": "^2.0.0",
+    "webpack-node-externals": "^3.0.0"
   },
   "devDependencies": {
     "@nrwl/cli": "13.1.4",
