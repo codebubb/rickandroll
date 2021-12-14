@@ -7,8 +7,9 @@ import * as express from 'express';
 import { Request, Response } from 'express';
 import * as randomstring from 'randomstring';
 import { MongoClient } from 'mongodb';
+import { environment } from './environments/environment';
 
-const url = 'mongodb://mongoadmin:r1ck%40r0ll@127.0.0.1:27018';
+const url = environment.dbConnectionString;
 const client = new MongoClient(url);
 const dbName = 'rickandroll';
 
