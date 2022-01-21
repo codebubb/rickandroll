@@ -26,4 +26,4 @@ jobs:
       - name: Sync project files (API)
         run: rsync -avrz --delete ${GITHUB_WORKSPACE}/dist/apps/rickandroll ${{ secrets.DEPLOY_USER}}@${{ secrets.DEPLOY_HOST}}:${{ secrets.REMOTE_APP_PATH }}
       - name: Sync project files (APP)
-        run: rsync -avrz --delete ${GITHUB_WORKSPACE}/dist/apps/rickandroll-web ${{ secrets.DEPLOY_USER}}@${{ secrets.DEPLOY_HOST}}:${{ secrets.REMOTE_WEB_PATH }}
+        run: rsync -avrz --delete ${GITHUB_WORKSPACE}/dist/apps/rickandroll-web/ ${{ secrets.DEPLOY_USER}}@${{ secrets.DEPLOY_HOST}}:${{ secrets.REMOTE_WEB_PATH }}
