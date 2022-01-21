@@ -52,6 +52,104 @@
           }
         }
       }
+    },
+    "rickandroll-web": {
+      "projectType": "application",
+      "root": "apps/rickandroll-web",
+      "sourceRoot": "apps/rickandroll-web/src",
+      "tags": [],
+      "targets": {
+        "build": {
+          "executor": "@nrwl/web:webpack",
+          "outputs": ["{options.outputPath}"],
+          "defaultConfiguration": "production",
+          "options": {
+            "outputPath": "dist/apps/rickandroll-web",
+            "compiler": "babel",
+            "index": "apps/rickandroll-web/src/index.html",
+            "baseHref": "/",
+            "main": "apps/rickandroll-web/src/main.ts",
+            "polyfills": "apps/rickandroll-web/src/polyfills.ts",
+            "tsConfig": "apps/rickandroll-web/tsconfig.app.json",
+            "assets": [
+              "apps/rickandroll-web/src/favicon.ico",
+              "apps/rickandroll-web/src/assets"
+            ],
+            "styles": ["apps/rickandroll-web/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/rickandroll-web/src/environments/environment.ts",
+                  "with": "apps/rickandroll-web/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/web:dev-server",
+          "options": {
+            "buildTarget": "rickandroll-web:build"
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "rickandroll-web:build:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/rickandroll-web/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/rickandroll-web"],
+          "options": {
+            "jestConfig": "apps/rickandroll-web/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "rickandroll-web-e2e": {
+      "root": "apps/rickandroll-web-e2e",
+      "sourceRoot": "apps/rickandroll-web-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/rickandroll-web-e2e/cypress.json",
+            "devServerTarget": "rickandroll-web:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "rickandroll-web:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/rickandroll-web-e2e/**/*.{js,ts}"]
+          }
+        }
+      },
+      "tags": [],
+      "implicitDependencies": ["rickandroll-web"]
     }
   }
 }
