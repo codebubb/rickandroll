@@ -1,1 +1,110 @@
-/* You can add global styles to this file, and also import other style files */
+$white: #fff;
+$red: rgb(184, 27, 27);
+$black: #000;
+
+html {
+  font-size: 14px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+section {
+  &.section {
+    &--hero {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+        url('./assets/Rick-Astley-Never-Gonna-Give-You-Up.png');
+      height: 600px;
+      background-repeat: no-repeat;
+      background-size: cover;
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 4rem 8rem;
+
+        .logo {
+          font-size: 2rem;
+          color: $white;
+        }
+
+        ul {
+          color: $white;
+          list-style-type: none;
+          display: flex;
+          li {
+            font-size: 1.25rem;
+            margin-left: 2rem;
+          }
+        }
+      }
+
+      .strapline {
+        padding: 0rem 8rem;
+        width: 66%;
+        h2 {
+          color: $white;
+          font-size: 3.5rem;
+          font-weight: 700;
+        }
+
+        button {
+          cursor: pointer;
+          padding: 1rem 4rem;
+          font-weight: 700;
+          margin-top: 2rem;
+          text-transform: uppercase;
+        }
+
+        .result {
+          color: $white;
+          font-size: 1.5rem;
+          padding: 1rem;
+          border: 2px solid $white;
+          background-color: rgba(0, 0, 0, 0.3);
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          .copy-btn {
+            margin: 0;
+            background-color: transparent;
+            border: 2px solid $white;
+            padding: 1rem;
+            color: $white;
+            transition: all 0.3s ease;
+            &:hover {
+              background-color: $white;
+              color: $black;
+            }
+          }
+
+          &.hidden {
+            display: none;
+          }
+
+          &.error {
+            border-color: $red;
+            color: $red;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  section {
+    &.section {
+      &--hero {
+        background-position-x: 50%;
+      }
+    }
+  }
+}

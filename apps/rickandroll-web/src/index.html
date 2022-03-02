@@ -7,9 +7,32 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <h1>Welcome to Rick and Roll</h1>
-    <rickandroll-root></rickandroll-root>
+    <section class="section--hero">
+      <header>
+        <span class="logo"><h1>Rickandroll.me</h1></span>
+        <ul>
+          <li>Home</li>
+          <li>About</li>
+          <li>Instructions</li>
+          <li>Contribute</li>
+        </ul>
+      </header>
+
+      <div class="strapline">
+        <h2>Create Short URLs to Rick Roll your friends.</h2>
+        <div class="result hidden" id="urlResult">
+          <button class="copy-btn" id="copyBtn">Copy</button>
+        </div>
+        <button id="actionBtn">Create Rick Roll</button>
+      </div>
+    </section>
   </body>
 </html>

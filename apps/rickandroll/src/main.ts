@@ -8,12 +8,14 @@ import { Request, Response } from 'express';
 import { MongoClient } from 'mongodb';
 import { environment } from './environments/environment';
 import { ShortUrlRoutes } from './routes/ShortUrlRoutes';
+import * as cors from 'cors';
 
 const url = environment.dbConnectionString;
 const client = new MongoClient(url);
 const dbName = 'rickandroll';
 
 const app = express();
+app.use(cors());
 app.use(ShortUrlRoutes);
 
 const connectToDatabase = async () => {
