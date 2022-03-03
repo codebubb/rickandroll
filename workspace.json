@@ -1,6 +1,29 @@
 {
   "version": 2,
   "projects": {
+    "common-defintions": {
+      "root": "libs/common-defintions",
+      "sourceRoot": "libs/common-defintions/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/common-defintions/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/common-defintions"],
+          "options": {
+            "jestConfig": "libs/common-defintions/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
     "rickandroll": {
       "root": "apps/rickandroll",
       "sourceRoot": "apps/rickandroll/src",

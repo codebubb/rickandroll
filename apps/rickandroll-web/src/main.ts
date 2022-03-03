@@ -1,4 +1,5 @@
 import { environment } from './environments/environment';
+import { allowedUrls } from '@rickandroll/common-defintions';
 
 window.onload = () => {
   const actionBtn = document.getElementById('actionBtn');
