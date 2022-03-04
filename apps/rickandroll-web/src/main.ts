@@ -1,14 +1,36 @@
 import { environment } from './environments/environment';
-import { allowedUrls } from '@rickandroll/common-defintions';
+import { AllowedUrl, allowedUrls } from '@rickandroll/common-defintions';
+import { url } from 'inspector';
+
+const mapAllowedUrlsToOptions = (
+  urls: AllowedUrl[],
+  htmlSelectElement: HTMLSelectElement
+) => {
+  urls.forEach((optionUrl) => {
+    const option = document.createElement('option');
+    option.value = optionUrl.url;
+    option.textContent = optionUrl.title;
+
+    htmlSelectElement.appendChild(option);
+  });
+};
 
 window.onload = () => {
   const actionBtn = document.getElementById('actionBtn');
   const urlResult = document.getElementById('urlResult');
   const copyBtn = document.getElementById('copyBtn');
+  const selectedTarget = document.getElementById(
+    'selectedTarget'
+  ) as HTMLSelectElement;
+
+  mapAllowedUrlsToOptions(allowedUrls, selectedTarget);
 
   actionBtn.addEventListener('click', () => {
+    const selectedTargetValue = selectedTarget.value;
+    const body = JSON.stringify({ selectedTargetValue });
     fetch(`${environment.apiUrl}/shorturl`, {
       method: 'POST',
+      body,
     })
       .then((response) => response.json())
       .then(({ result }) => {
