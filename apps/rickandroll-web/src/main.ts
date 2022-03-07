@@ -31,9 +31,13 @@ window.onload = () => {
     fetch(`${environment.apiUrl}/shorturl`, {
       method: 'POST',
       body,
+      headers: {
+        'content-type': 'application/json',
+      },
     })
       .then((response) => response.json())
       .then(({ result }) => {
+        urlResult.firstChild.remove();
         urlResult.insertAdjacentHTML(
           'afterbegin',
           `<span>${result.url}</span>`

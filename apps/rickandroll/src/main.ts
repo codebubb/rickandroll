@@ -9,14 +9,17 @@ import { MongoClient } from 'mongodb';
 import { environment } from './environments/environment';
 import { ShortUrlRoutes } from './routes/ShortUrlRoutes';
 import * as cors from 'cors';
+import { RedirectUrlRoutes } from './routes/RedirectUrlRoutes';
 
 const url = environment.dbConnectionString;
 const client = new MongoClient(url);
 const dbName = 'rickandroll';
 
 const app = express();
+app.use(express.json());
 app.use(cors());
 app.use(ShortUrlRoutes);
+app.use(RedirectUrlRoutes);
 
 const connectToDatabase = async () => {
   await client.connect();
@@ -27,17 +30,6 @@ const connectToDatabase = async () => {
 
 connectToDatabase().then(console.log).catch(console.error);
 // .finally(() => client.close());
-
-app.get('/api/:id', async (req: Request, res: Response) => {
-  const id = req.params.id;
-  const findResult = await req.app.locals.collection.findOne({ id });
-
-  if (findResult) {
-    return res.redirect('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
-  }
-
-  return res.send('Nothing here');
-});
 
 const port = process.env.port || 3333;
 const server = app.listen(port, () => {
