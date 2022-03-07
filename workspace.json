@@ -76,6 +76,104 @@
         }
       }
     },
+    "rickandroll-stats": {
+      "projectType": "application",
+      "root": "apps/rickandroll-stats",
+      "sourceRoot": "apps/rickandroll-stats/src",
+      "tags": [],
+      "targets": {
+        "build": {
+          "executor": "@nrwl/web:webpack",
+          "outputs": ["{options.outputPath}"],
+          "defaultConfiguration": "production",
+          "options": {
+            "outputPath": "dist/apps/rickandroll-stats",
+            "compiler": "babel",
+            "index": "apps/rickandroll-stats/src/index.html",
+            "baseHref": "/",
+            "main": "apps/rickandroll-stats/src/main.ts",
+            "polyfills": "apps/rickandroll-stats/src/polyfills.ts",
+            "tsConfig": "apps/rickandroll-stats/tsconfig.app.json",
+            "assets": [
+              "apps/rickandroll-stats/src/favicon.ico",
+              "apps/rickandroll-stats/src/assets"
+            ],
+            "styles": ["apps/rickandroll-stats/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/rickandroll-stats/src/environments/environment.ts",
+                  "with": "apps/rickandroll-stats/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/web:dev-server",
+          "options": {
+            "buildTarget": "rickandroll-stats:build"
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "rickandroll-stats:build:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/rickandroll-stats/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/rickandroll-stats"],
+          "options": {
+            "jestConfig": "apps/rickandroll-stats/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "rickandroll-stats-e2e": {
+      "root": "apps/rickandroll-stats-e2e",
+      "sourceRoot": "apps/rickandroll-stats-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/rickandroll-stats-e2e/cypress.json",
+            "devServerTarget": "rickandroll-stats:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "rickandroll-stats:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/rickandroll-stats-e2e/**/*.{js,ts}"]
+          }
+        }
+      },
+      "tags": [],
+      "implicitDependencies": ["rickandroll-stats"]
+    },
     "rickandroll-web": {
       "projectType": "application",
       "root": "apps/rickandroll-web",

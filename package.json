@@ -5,6 +5,7 @@
   "scripts": {
     "build:api": "nx run rickandroll:build --prod",
     "build:app": "nx run rickandroll-web:build --prod",
+    "build:stats": "nx run rickandroll-stats:build --prod",
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test"

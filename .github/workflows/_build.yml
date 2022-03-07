@@ -17,6 +17,8 @@ jobs:
         run: npm run build:api
       - name: Build Web App
         run: npm run build:app
+      - name: Build Stats App
+        run: npm run build:stats
       - name: Setup SSH Agent
         uses: webfactory/ssh-agent@v0.4.1
         with:
@@ -27,3 +29,5 @@ jobs:
         run: rsync -avrz --delete ${GITHUB_WORKSPACE}/dist/apps/rickandroll ${{ secrets.DEPLOY_USER}}@${{ secrets.DEPLOY_HOST}}:${{ secrets.REMOTE_APP_PATH }}
       - name: Sync project files (APP)
         run: rsync -avrz --delete ${GITHUB_WORKSPACE}/dist/apps/rickandroll-web/ ${{ secrets.DEPLOY_USER}}@${{ secrets.DEPLOY_HOST}}:${{ secrets.REMOTE_WEB_PATH }}
+      - name: Sync project files (STATS)
+        run: rsync -avrz --delete ${GITHUB_WORKSPACE}/dist/apps/rickandroll-stats/ ${{ secrets.DEPLOY_USER}}@${{ secrets.DEPLOY_HOST}}:${{ secrets.REMOTE_WEB_PATH }}/stats
