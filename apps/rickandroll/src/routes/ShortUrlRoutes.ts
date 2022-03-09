@@ -26,6 +26,7 @@ router.post('/shorturl', async (req: Request, res: Response) => {
     id: randomString,
     url: `${environment.apiUrl}/api/${randomString}`,
     target,
+    redirects: [],
   };
 
   const insertResult = await collection.insertOne(newLink);
