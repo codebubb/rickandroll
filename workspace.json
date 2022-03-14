@@ -121,7 +121,8 @@
         "serve": {
           "executor": "@nrwl/web:dev-server",
           "options": {
-            "buildTarget": "rickandroll-stats:build"
+            "buildTarget": "rickandroll-stats:build",
+            "port": 4400
           },
           "configurations": {
             "production": {
