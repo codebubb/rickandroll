@@ -13,13 +13,20 @@ router.get('/:id', async (req: Request, res: Response) => {
 
     const existingRedirects = findResult.redirects || [];
 
-    const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+    const ip = (req.headers['x-forwarded-for'] ||
+      req.socket.remoteAddress) as string;
 
-    const ipLookupRequest = await axios.get(`http://ip-api.com/json/${ip}`);
+    const ipLocalList = ['::1', '127.0.0.1', 'localhost'];
 
-    const { data } = ipLookupRequest;
+    let userLocation;
 
-    const userLocation = `${data.city}, ${data.regionName}, ${data.country}`;
+    if (ipLocalList.includes(ip)) {
+      userLocation = 'Localhost';
+    } else {
+      const ipLookupRequest = await axios.get(`http://ip-api.com/json/${ip}`);
+      const { data } = ipLookupRequest;
+      userLocation = `${data.city}, ${data.regionName}, ${data.country}`;
+    }
 
     existingRedirects.push({
       accessed: new Date().toISOString(),
@@ -37,6 +44,20 @@ router.get('/:id', async (req: Request, res: Response) => {
   }
 
   return res.send('Nothing here');
+});
+
+router.get('/:id/stats', async (req: Request, res: Response) => {
+  const id = req.params.id;
+  const findResult = await req.app.locals.collection.findOne({ id });
+
+  if (findResult) {
+    return res.json({ status: 'ok', data: findResult });
+  }
+
+  return res.status(400).json({
+    status: 'error',
+    message: 'No short url with that id exists.',
+  });
 });
 
 export { router as RedirectUrlRoutes };
