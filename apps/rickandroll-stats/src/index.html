@@ -9,6 +9,27 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
   </head>
   <body>
-    <rickandroll-root></rickandroll-root>
+    <section class="section--hero">
+      <header>
+        <span class="logo"><h1>Rickandroll.me</h1></span>
+        <ul>
+          <li>Home</li>
+          <li>About</li>
+          <li>Instructions</li>
+          <li>Contribute</li>
+        </ul>
+      </header>
+
+      <div class="strapline">
+        <h2>Create Short URLs to Rick Roll your friends.</h2>
+        <div class="result hidden" id="urlResult">
+          <button class="copy-btn" id="copyBtn">Copy</button>
+        </div>
+        <div>
+          <select id="selectedTarget"></select>
+          <button id="actionBtn">Create Rick Roll</button>
+        </div>
+      </div>
+    </section>
   </body>
 </html>
