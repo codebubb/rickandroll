@@ -24,9 +24,7 @@ router.post('/shorturl', async (req: Request, res: Response) => {
 
   const newLink = {
     id: randomString,
-    url: `${environment.apiUrl}${
-      environment.production ? '/api' : ''
-    }/${randomString}`,
+    url: `${environment.apiUrl}/${randomString}`,
     target,
     redirects: [],
   };
