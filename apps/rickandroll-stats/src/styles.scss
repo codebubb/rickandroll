@@ -1,1 +1,15 @@
 @import '../../../libs/common-defintions/src/lib/styles.scss';
+
+table {
+  color: $white;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+  th,
+  td {
+    padding: 1rem;
+    font-size: 1.5rem;
+  }
+
+  th {
+    border-bottom: 1px solid $white;
+  }
+}
