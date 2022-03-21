@@ -90,7 +90,7 @@
             "outputPath": "dist/apps/rickandroll-stats",
             "compiler": "babel",
             "index": "apps/rickandroll-stats/src/index.html",
-            "baseHref": "/stats",
+            "baseHref": "/",
             "main": "apps/rickandroll-stats/src/main.ts",
             "polyfills": "apps/rickandroll-stats/src/polyfills.ts",
             "tsConfig": "apps/rickandroll-stats/tsconfig.app.json",
