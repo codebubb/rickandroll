@@ -13,3 +13,20 @@ table {
     border-bottom: 1px solid $white;
   }
 }
+
+.urlLookup {
+  display: flex;
+  align-items: flex-end;
+  color: $white;
+  padding: 4rem 8rem;
+
+  input,
+  button {
+    padding: 1rem;
+  }
+
+  &__input {
+    display: flex;
+    flex-direction: column;
+  }
+}

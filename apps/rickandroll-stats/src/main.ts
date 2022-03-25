@@ -37,6 +37,16 @@ const createStatsTableRow = (redirect: {
 window.onload = () => {
   const straplineElement = document.querySelector('.strapline');
   const id = window.location.pathname.split('/')[2];
+
+  const shortUrlBtn = document.getElementById('shortUrlBtn');
+  const shortUrlId = document.getElementById('shortUrlId') as HTMLInputElement;
+
+  shortUrlBtn.addEventListener('click', () => {
+    const shortUrlValue = shortUrlId.value.trim();
+
+    window.location.href = `/stats/${shortUrlValue}`;
+  });
+
   fetch(`${environment.apiUrl}/${id}/stats`)
     .then((response) => response.json())
     .then((result) => {

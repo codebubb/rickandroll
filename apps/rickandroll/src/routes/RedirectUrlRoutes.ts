@@ -1,5 +1,6 @@
 import { Router, Request, Response } from 'express';
 import axios from 'axios';
+import { environment } from '../environments/environment';
 
 const router = Router();
 
@@ -58,6 +59,12 @@ router.get('/:id/stats', async (req: Request, res: Response) => {
     status: 'error',
     message: 'No short url with that id exists.',
   });
+});
+
+router.get('/:id/viewstats', async (req: Request, res: Response) => {
+  const id = req.params.id;
+
+  return res.redirect(`${environment.statsAppUrl}/${id}`);
 });
 
 export { router as RedirectUrlRoutes };
