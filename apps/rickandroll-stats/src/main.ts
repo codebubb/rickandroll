@@ -40,11 +40,16 @@ window.onload = () => {
 
   const shortUrlBtn = document.getElementById('shortUrlBtn');
   const shortUrlId = document.getElementById('shortUrlId') as HTMLInputElement;
-
+  const menuBtn = document.querySelector('#menu:before');
+  const menuUl = document.getElementById('menu');
   shortUrlBtn.addEventListener('click', () => {
     const shortUrlValue = shortUrlId.value.trim();
 
     window.location.href = `/stats/${shortUrlValue}`;
+  });
+
+  menuBtn.addEventListener('click', () => {
+    console.log('Menu');
   });
 
   fetch(`${environment.apiUrl}/${id}/stats`)

@@ -4,7 +4,13 @@
     <meta charset="utf-8" />
     <title>RickandrollWeb</title>
     <base href="/" />
-
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -18,6 +24,7 @@
     <section class="section--hero">
       <header>
         <span class="logo"><h1>Rickandroll.me</h1></span>
+        <div class="mobile-nav"></div>
         <ul>
           <li><a href="https://rickandroll.me">Home</a></li>
           <li><a href="#about">About</a></li>
@@ -39,7 +46,7 @@
         </div>
       </div>
     </section>
-    <section id="instructions">
+    <section id="instructions" class="section--instructions">
       <h2>Instructions</h2>
       <p>
         You can generate a short URL to send to your friends; they'll be redirected to a Rick Roll video of your choice and then you can view stats of where it was accessed from!
@@ -52,7 +59,7 @@
       </p>
       <p>You can generate as many short URLs as you like.</p>
     </section>
-    <section id="about">
+    <section id="about" class="section--about">
       <h2>About</h2>
       <p>
         This is a simple URL shortener app that was made as part of a full,

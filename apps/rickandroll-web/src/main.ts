@@ -23,6 +23,14 @@ window.onload = () => {
     'selectedTarget'
   ) as HTMLSelectElement;
 
+  const mobileNavBtn = document.querySelector('.mobile-nav');
+  const mobileMenuElem = document.querySelector('header ul');
+
+  mobileNavBtn.addEventListener('click', () => {
+    mobileNavBtn.classList.toggle('open');
+    mobileMenuElem.classList.toggle('open');
+  });
+
   mapAllowedUrlsToOptions(allowedUrls, selectedTarget);
 
   actionBtn.addEventListener('click', () => {

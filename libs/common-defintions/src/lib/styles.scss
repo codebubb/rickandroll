@@ -6,6 +6,10 @@ html {
   font-size: 14px;
 }
 
+body {
+  margin: 0;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -19,7 +23,6 @@ section {
     &--hero {
       background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
         url('/assets/Rick-Astley-Never-Gonna-Give-You-Up.png');
-      height: 600px;
       background-repeat: no-repeat;
       background-size: cover;
 
@@ -35,18 +38,21 @@ section {
         }
 
         ul {
-          color: $white;
           list-style-type: none;
           display: flex;
+
           li {
             font-size: 1.25rem;
             margin-left: 2rem;
+            a {
+              color: $white;
+            }
           }
         }
       }
 
       .strapline {
-        padding: 0rem 8rem;
+        padding: 1rem 8rem;
         width: 66%;
         h2 {
           color: $white;
@@ -101,7 +107,16 @@ section {
         }
       }
     }
+
+    &--instructions,
+    &--about {
+      padding: 2rem 8rem 0;
+    }
   }
+}
+
+footer {
+  padding: 2rem 8rem 0;
 }
 
 @media screen and (max-width: 400px) {
@@ -109,6 +124,84 @@ section {
     &.section {
       &--hero {
         background-position-x: 50%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  section {
+    &.section {
+      &--hero {
+        header {
+          padding: 0 0.5rem;
+          .logo {
+            font-size: 1.5rem;
+          }
+
+          .mobile-nav {
+            position: fixed;
+            display: block;
+            right: 0;
+            padding: 1rem;
+            background-image: url('/assets/menu.svg');
+            transition: all 0.3s ease;
+            &.open {
+              right: 135px;
+              background-color: $black;
+              z-index: 10;
+            }
+          }
+
+          ul {
+            display: flex;
+            flex-direction: column;
+            padding: 2rem;
+            background-color: $black;
+            position: fixed;
+            right: -150px;
+            top: -2rem;
+            transition: all 0.3s ease;
+
+            &.open {
+              right: 0;
+            }
+
+            li {
+              margin: 1rem 0;
+            }
+          }
+        }
+
+        .strapline {
+          padding: 0.5rem;
+          width: 100%;
+
+          h2 {
+            font-size: 2rem;
+          }
+
+          button,
+          select {
+            display: block;
+            width: 100%;
+          }
+
+          #urlResult {
+            font-size: 1rem;
+          }
+          #copyBtn {
+            width: 6rem;
+          }
+        }
+      }
+
+      &--instructions {
+        padding: 0 0.5rem;
+      }
+
+      &--about {
+        padding: 0 0.5rem;
       }
     }
   }
